@@ -39,9 +39,9 @@ public class Character
 
     public AttackerResponse Attack() 
     {
-        double randomNumberForLuck = random.Next(40) - 20.0;
-
-        double changePower = randomNumberForLuck / 100.0; 
+        int randomNumberForLuck = random.Next(41);
+        randomNumberForLuck -= 20;
+        double changePower = (double)randomNumberForLuck / 100.0; 
 
         int attackStrengthSummary = Strength + EquippedWeapon.PerformAttack();
         int damageModifier = (int)(attackStrengthSummary * changePower);
