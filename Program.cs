@@ -12,8 +12,10 @@ class Program
     static void Main() 
     {
         Character Person1 = CharacterSelection();
+        WeaponSelection(Person1);
         Character Person2 = CharacterSelection();
-        
+        WeaponSelection(Person2);
+
         Game GameControler = new Game();
         GameControler.RunGame(Person1, Person2);
     }
@@ -23,7 +25,7 @@ class Program
         Console.WriteLine("Wybierz postac:");
         Console.WriteLine("1 - Warrior, 2 - Mage, 3 - Archer");
 
-        string SelectedNumber = Console.ReadLine();
+        string? SelectedNumber = Console.ReadLine();
         Character SelectedCharacter;
 
         switch (SelectedNumber)
@@ -44,6 +46,35 @@ class Program
         }
 
         return SelectedCharacter;
+    }
+
+    private static void WeaponSelection (Character Hero)
+    {
+        bool IsWeaponChoosen = false;
+
+        while(!IsWeaponChoosen)
+        {
+            
+            Console.WriteLine("Czy ta postać ma posiadać broń? (y/n) ");
+
+            string? SelectedAnswer = Console.ReadLine();
+
+
+            switch (SelectedAnswer)
+            {
+                case "y":
+                    Hero.UseWeapon();
+                    IsWeaponChoosen = true;
+                    break;
+                case "n":
+                    IsWeaponChoosen = false;
+                    break;
+                default:
+                    Console.WriteLine("Nie istnieje taka opcja, popraw swoja decyzje.");
+                    break;
+            }
+        }
+        
     }
 
 

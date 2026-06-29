@@ -23,7 +23,8 @@ public class Game
 
 
             int AtackPower = Atacker.Atack();
-            if(!Defender.CheckIsALive(AtackPower))
+            Defender.ReciveDamage(AtackPower);
+            if(!Defender.CheckIsALive())
             {
                 break;
             }

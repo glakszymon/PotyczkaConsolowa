@@ -7,9 +7,8 @@ public class Character
     public string Name { get; set; }
     public int Health { get; protected set; }
     public int Strength { get; protected set; }
+    public int WeaponPower { get; protected set; } = 0;
 
-
-  
     public Character(string name, int health, int strength)
     {
         Name = name;
@@ -24,14 +23,14 @@ public class Character
 
     public int Atack()
     {
-        return Strength;
+        int AtackStrengthSummary = Strength + WeaponPower;
+        return AtackStrengthSummary;
     }
 
-    public bool CheckIsALive (int DamagePoints)
+    public bool CheckIsALive ()
     {
-        ReciveDamage(DamagePoints);
 
-        if(Health == 0)
+        if(Health <= 0)
         {
             return false;
         }
@@ -39,7 +38,7 @@ public class Character
         return true;
     }
 
-    private void ReciveDamage (int Points)
+    public void ReciveDamage (int Points)
     {
         if(Health - Points < 0)
             Health = 0;
@@ -49,5 +48,10 @@ public class Character
         Console.WriteLine($"{Name} otrzymal {Points} punktow obrazen.");
 
         return;
+    }
+
+    public virtual void UseWeapon()
+    {
+        
     }
 }
