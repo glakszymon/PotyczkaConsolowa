@@ -19,7 +19,7 @@ public class Game
         while(true)
         {
             ++RoundsCounter;
-            Console.WriteLine($"----- Round {RoundsCounter} -----");
+            Console.WriteLine($"-------------------- Round {RoundsCounter} --------------------");
 
 
             int AtackPower = Atacker.Atack();
@@ -32,7 +32,7 @@ public class Game
             Console.WriteLine("");
             Atacker.ShowStats();
             Defender.ShowStats();
-            Console.WriteLine("----------------------------------");
+            Console.WriteLine("=================================================");
 
             ChangeSides();
         }
