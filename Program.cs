@@ -79,14 +79,14 @@ class Program
 
             if (int.TryParse(SelectedAnswer, out int wynik))
             {
-                if(!Hero.CanUseWeapon(Hero.AllowedWeapons[wynik])) 
+                if(wynik <= 0 || wynik > Hero.AllowedWeapons.Count || !Hero.CanUseWeapon(Hero.AllowedWeapons[wynik-1])) 
                 {
                     Console.WriteLine("Podano zła wartosc. Powtorz.");
                     continue;
                 }
 
                 IsWeaponChoosen = true;
-                Hero.UseWeapon(Hero.AllowedWeapons[wynik]);
+                Hero.UseWeapon(Hero.AllowedWeapons[wynik-1]);
             }
             else
             {

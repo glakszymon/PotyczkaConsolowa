@@ -16,7 +16,7 @@ public class Character
     // public int WeaponPower { get; protected set; } 
 
     public List<IWeapon> AllowedWeapons { get; protected set; } = new List<IWeapon>();
-    public IWeapon EquippedWeapon {get; private set; } = null;
+    public IWeapon EquippedWeapon {get; private set; } = new NoWeapon();
 
 
     public Character(string name, int health, int strength, Random random)
