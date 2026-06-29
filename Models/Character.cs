@@ -23,8 +23,18 @@ public class Character
 
     public int Atack()
     {
+        Random random = new();
+        bool IsBetterHit = random.Next(2) == 0;
+        int ChangePower = random.Next(20);
+
         int AtackStrengthSummary = Strength + WeaponPower;
-        return AtackStrengthSummary;
+        
+        if(ChangePower == 0)
+            return AtackStrengthSummary;
+        if(IsBetterHit)
+            return AtackStrengthSummary += AtackStrengthSummary * (ChangePower/100);
+        
+        return AtackStrengthSummary -= AtackStrengthSummary * (ChangePower/100);
     }
 
     public bool CheckIsALive ()
