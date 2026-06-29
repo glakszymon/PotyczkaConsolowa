@@ -1,4 +1,5 @@
 using System;
+using Potyczka.Weapons;
 
 namespace Potyczka.Models;
 
@@ -12,8 +13,8 @@ public class Mage : Character
 
     public override void UseWeapon()
     {
-        WeaponPower = 30;
-        Console.WriteLine($"{Name} otrzymał Patyk");
+        Weapon = new Staff();
+        Console.WriteLine($"{Name} otrzymał {Weapon.Name} o mocy {Weapon.Damage}");
     }
 }
 

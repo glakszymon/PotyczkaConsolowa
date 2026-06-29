@@ -1,4 +1,5 @@
 using System;
+using Potyczka.Weapons;
 
 namespace Potyczka.Models;
 
@@ -9,8 +10,8 @@ public class Warrior : Character
 
     public override void UseWeapon()
     {
-        WeaponPower = 10;
-        Console.WriteLine($"{Name} otrzymał Miecz");
+        Weapon = new Sword();
+        Console.WriteLine($"{Name} otrzymał {Weapon.Name} o mocy {Weapon.Damage}");
     }
 }
 

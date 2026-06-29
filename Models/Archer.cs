@@ -1,4 +1,5 @@
 using System;
+using Potyczka.Weapons;
 
 namespace Potyczka.Models;
 
@@ -13,8 +14,8 @@ public class Archer : Character
 
     public override void UseWeapon()
     {
-        WeaponPower = 15;
-        Console.WriteLine($"{Name} otrzymał Łuk");
+        Weapon = new Bow();
+        Console.WriteLine($"{Name} otrzymał {Weapon.Name} o mocy {Weapon.Damage}");
     }
 }
 

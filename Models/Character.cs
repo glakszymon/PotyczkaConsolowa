@@ -1,13 +1,16 @@
 using System;
+using Potyczka.Weapons;
 
 namespace Potyczka.Models;
 
-public class Character
+public class Character 
 {
     public string Name { get; set; }
     public int Health { get; protected set; }
     public int Strength { get; protected set; }
-    public int WeaponPower { get; protected set; } = 0;
+    // public int WeaponPower { get; protected set; } 
+
+    public IWeapon Weapon {get; protected set; }
 
     public Character(string name, int health, int strength)
     {
@@ -18,29 +21,28 @@ public class Character
 
     public virtual void ShowStats()
     {
-        Console.WriteLine($"[{Name}] HP: {Health} | STR: {Strength} | WEAPON POWER: {(WeaponPower == 0 ? "Brak" : WeaponPower)} ");
+        Console.WriteLine($"[{Name}] HP: {Health} | STR: {Strength} | WEAPON: {(Weapon == null ? "Brak" : Weapon.Name)} ");
     }
 
     public int Atack() 
-{
-
-    bool isBetterHit = Random.Shared.Next(2) == 0;
-
-    double randomNumberForLuck = Random.Shared.Next(20);
-    double changePower = randomNumberForLuck / 100.0; 
-
-    int attackStrengthSummary = Strength + WeaponPower;
-    int damageModifier = (int)(attackStrengthSummary * changePower);
-
-    if (isBetterHit)
     {
-        Console.WriteLine($"{Name} Atakuje z siła {attackStrengthSummary}. Trafił dokładnie i zwiekszył atak o {damageModifier}");
-        return attackStrengthSummary + damageModifier;
+        bool isBetterHit = Random.Shared.Next(2) == 0;
+
+        double randomNumberForLuck = Random.Shared.Next(20);
+        double changePower = randomNumberForLuck / 100.0; 
+
+        int attackStrengthSummary = Strength + Weapon.Damage;
+        int damageModifier = (int)(attackStrengthSummary * changePower);
+
+        if (isBetterHit)
+        {
+            Console.WriteLine($"{Name} Atakuje z siła {attackStrengthSummary}. Trafił dokładnie i zwiekszył atak o {damageModifier}");
+            return attackStrengthSummary + damageModifier;
+        }
+        
+        Console.WriteLine($"{Name} Atakuje z siła {attackStrengthSummary}. Nie dokładnie uderzył i pogorszył atak o {damageModifier}");
+        return attackStrengthSummary - damageModifier;
     }
-    
-    Console.WriteLine($"{Name} Atakuje z siła {attackStrengthSummary}. Nie dokładnie uderzył i pogorszył atak o {damageModifier}");
-    return attackStrengthSummary - damageModifier;
-}
     public bool CheckIsALive ()
     {
 
