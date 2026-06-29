@@ -21,22 +21,24 @@ public class Character
         Console.WriteLine($"[{Name}] HP: {Health} | STR: {Strength} | WEAPON POWER: {(WeaponPower == 0 ? "Brak" : WeaponPower)} ");
     }
 
-    public int Atack()
+    public int Atack() 
+{
+
+    bool isBetterHit = Random.Shared.Next(2) == 0;
+
+    double randomNumberForLuck = Random.Shared.Next(20);
+    double changePower = randomNumberForLuck / 100.0; 
+
+    int attackStrengthSummary = Strength + WeaponPower;
+    int damageModifier = (int)(attackStrengthSummary * changePower);
+
+    if (isBetterHit)
     {
-        Random random = new();
-        bool IsBetterHit = random.Next(2) == 0;
-        int ChangePower = random.Next(20);
-
-        int AtackStrengthSummary = Strength + WeaponPower;
-        
-        if(ChangePower == 0)
-            return AtackStrengthSummary;
-        if(IsBetterHit)
-            return AtackStrengthSummary += AtackStrengthSummary * (ChangePower/100);
-        
-        return AtackStrengthSummary -= AtackStrengthSummary * (ChangePower/100);
+        return attackStrengthSummary + damageModifier;
     }
-
+    
+    return attackStrengthSummary - damageModifier;
+}
     public bool CheckIsALive ()
     {
 
