@@ -69,31 +69,31 @@ class Program
         while(!IsWeaponChoosen)
         {
             
-            Console.WriteLine("Czy ta postać ma posiadać broń? (y/n) ");
+            Console.WriteLine("Wybierz broń dla tej postaci:");
+            for(int i = 0; i < Hero.AllowedWeapons.Count; ++i)
+            {
+                Console.WriteLine($"{i+1} - {Hero.AllowedWeapons[i].Name}");
+            }
 
             string? SelectedAnswer = Console.ReadLine();
 
-            switch (SelectedAnswer)
+            if (int.TryParse(SelectedAnswer, out int wynik))
             {
-                case "y":
-                    Hero.UseWeapon(new Sword());
-                    Console.WriteLine($"{Hero.Name} otrzymał {Hero.Weapon.Name} o mocy {Hero.Weapon.Damage}");
-                    IsWeaponChoosen = true;
-                    break;
-                case "n":
-                    Hero.UseWeapon(new NoWeapon());
-                    Console.WriteLine($"{Hero.Name} nie otrzyma żadnej broni");
-                    IsWeaponChoosen = true;
-                    break;
-                default:
-                    Console.WriteLine("Nie istnieje taka opcja, popraw swoja decyzje.");
-                    break;
+                if(!Hero.CanUseWeapon(Hero.AllowedWeapons[wynik])) 
+                {
+                    Console.WriteLine("Podano zła wartosc. Powtorz.");
+                    continue;
+                }
+
+                IsWeaponChoosen = true;
+                Hero.UseWeapon(Hero.AllowedWeapons[wynik]);
+            }
+            else
+            {
+                Console.WriteLine("Podano zła wartosc. Powtorz.");
+                continue;
             }
         }
         
     }
-
-
-    
-
 }

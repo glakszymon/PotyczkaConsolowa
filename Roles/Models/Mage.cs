@@ -7,7 +7,11 @@ public class Mage : Character
 {
     
     public Mage(string name, Random random) : base(name, health: 100, strength: 30, random)
-    {}
+    {
+        AllowedWeapons.Add(new Staff());
+        AllowedWeapons.Add(new Sword());
+        AllowedWeapons.Add(new Bow());
+    }
 
 }
 

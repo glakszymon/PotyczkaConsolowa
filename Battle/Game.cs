@@ -63,7 +63,7 @@ public class Game
 
     public void ShowStats(Character person)
     {
-        Console.WriteLine($"[{person.Name}] HP: {person.Health} | STR: {person.Strength} | WEAPON: {(person.Weapon == null ? "Brak" : person.Weapon.Name)} ");
+        Console.WriteLine($"[{person.Name}] HP: {person.Health} | STR: {person.Strength} | WEAPON: {(person.EquippedWeapon == null ? "Brak" : person.EquippedWeapon.Name)} ");
     }
 
 }

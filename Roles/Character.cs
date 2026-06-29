@@ -3,6 +3,7 @@ using Potyczka.Extra;
 using Potyczka.Roles.ModelsCreators;
 using Potyczka.Weapons;
 
+
 namespace Potyczka.Roles;
 
 public class Character 
@@ -14,7 +15,9 @@ public class Character
     public int Strength { get; protected set; }
     // public int WeaponPower { get; protected set; } 
 
-    public IWeapon Weapon {get; protected set; }
+    public List<IWeapon> AllowedWeapons { get; protected set; } = new List<IWeapon>();
+    public IWeapon EquippedWeapon {get; private set; } = null;
+
 
     public Character(string name, int health, int strength, Random random)
     {
@@ -24,6 +27,15 @@ public class Character
         this.random = random;
     }
 
+    public void UseWeapon(IWeapon ChosenWeapon)
+    {
+        EquippedWeapon = ChosenWeapon;
+    }
+
+    public bool CanUseWeapon(IWeapon chosenWeapon)
+    {
+        return AllowedWeapons.Contains(chosenWeapon);
+    }
 
     public AttackerResponse Attack() 
     {
@@ -31,7 +43,7 @@ public class Character
 
         double changePower = randomNumberForLuck / 100.0; 
 
-        int attackStrengthSummary = Strength + Weapon.Damage;
+        int attackStrengthSummary = Strength + EquippedWeapon.PerformAttack();
         int damageModifier = (int)(attackStrengthSummary * changePower);
 
         return new AttackerResponse(attackStrengthSummary + damageModifier, attackStrengthSummary, damageModifier);
@@ -61,9 +73,5 @@ public class Character
         return new DefenderResponse(FinalDamage, Points, ArmorSafer, CheckIsALive());
     }
 
-    public void UseWeapon(IWeapon ChosenWeapon)
-    {
-        Weapon = ChosenWeapon;
-    }
 
 }
