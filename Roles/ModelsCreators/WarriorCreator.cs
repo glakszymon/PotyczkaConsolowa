@@ -6,8 +6,5 @@ namespace Potyczka.Roles.ModelsCreators;
 
 public class WarriorCreator : CharacterSpawner
 {
-    public override Character CreateCharacter()
-    {
-        return new Warrior("Warrior", Random.Shared);
-    } 
+    public override Character CreateCharacter() => new Warrior("Warrior", Random.Shared); 
 }
