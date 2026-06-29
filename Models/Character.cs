@@ -34,9 +34,11 @@ public class Character
 
     if (isBetterHit)
     {
+        Console.WriteLine($"{Name} Atakuje z siła {attackStrengthSummary}. Trafił dokładnie i zwiekszył atak o {damageModifier}");
         return attackStrengthSummary + damageModifier;
     }
     
+    Console.WriteLine($"{Name} Atakuje z siła {attackStrengthSummary}. Nie dokładnie uderzył i pogorszył atak o {damageModifier}");
     return attackStrengthSummary - damageModifier;
 }
     public bool CheckIsALive ()
