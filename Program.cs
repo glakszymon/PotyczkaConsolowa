@@ -67,7 +67,7 @@ class Program
                     IsWeaponChoosen = true;
                     break;
                 case "n":
-                    IsWeaponChoosen = false;
+                    IsWeaponChoosen = true;
                     break;
                 default:
                     Console.WriteLine("Nie istnieje taka opcja, popraw swoja decyzje.");

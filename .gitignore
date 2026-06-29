@@ -1,0 +1,59 @@
+# This is a sample .gitignore file for C#/ .NET projects
+
+## Build artifacts
+bin/
+obj/
+**/bin/
+**/obj/
+
+## Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+## Rider
+.idea/
+
+## Visual Studio Code
+.vscode/
+
+## Debug / Release folders
+Debug/
+Release/
+
+## Publish output
+publish/
+*.deploy
+
+## NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+## Logs
+*.log
+
+## OS generated files
+Thumbs.db
+.DS_Store
+
+## Runtime files
+*.dll
+*.exe
+*.pdb
+*.cache
+
+## JetBrains Rider
+/.idea/
+
+## User-specific files
+*.userprefs
+
+## Others
+*.vspscc
+*.vssscc
+launchSettings.json
+

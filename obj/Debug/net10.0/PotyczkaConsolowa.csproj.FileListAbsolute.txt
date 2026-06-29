@@ -12,3 +12,4 @@
 /home/szymon/Dokumenty/programowanie/C#/PotyczkaConsolowa/obj/Debug/net10.0/PotyczkaConsolowa.pdb
 /home/szymon/Dokumenty/programowanie/C#/PotyczkaConsolowa/obj/Debug/net10.0/PotyczkaConsolowa.genruntimeconfig.cache
 /home/szymon/Dokumenty/programowanie/C#/PotyczkaConsolowa/obj/Debug/net10.0/ref/PotyczkaConsolowa.dll
+/home/szymon/Dokumenty/programowanie/C#/PotyczkaConsolowa/obj/Debug/net10.0/PotyczkaConsolowa.sourcelink.json
