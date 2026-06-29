@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Potyczka.Battle;
-using Potyczka.Models;
+using Potyczka.Roles.Models;
+using Potyczka.Weapons;
+using Potyczka.Roles;
+using Potyczka.Roles.ModelsCreators;
 
 namespace Potyczka;
 
@@ -13,6 +16,7 @@ class Program
     {
         Character Person1 = CharacterSelection();
         WeaponSelection(Person1);
+
         Character Person2 = CharacterSelection();
         WeaponSelection(Person2);
 
@@ -22,29 +26,39 @@ class Program
 
     private static Character CharacterSelection()
     {
-        Console.WriteLine("Wybierz postac:");
-        Console.WriteLine("1 - Warrior, 2 - Mage, 3 - Archer");
+  
+        CharacterSpawner characterSpawner = null;
 
-        string? SelectedNumber = Console.ReadLine();
-        Character SelectedCharacter;
+        bool chosen = false;
 
-        switch (SelectedNumber)
+        while(!chosen)
         {
-            case "1":
-                SelectedCharacter = new Warrior("Warrior");
-                break;
-            case "2":
-                SelectedCharacter = new Mage("Mage");
-                break;
-            case "3":
-                SelectedCharacter = new Archer("Archer");
-                break;
-            default:
-                Console.WriteLine("Ta opcja nie istnieje. Wybierz poprawnie od 1 do 3");
-                SelectedCharacter = CharacterSelection();
-                break;
+            Console.WriteLine("Wybierz postac:");
+            Console.WriteLine("1 - Warrior, 2 - Mage, 3 - Archer");
+            string? SelectedNumber = Console.ReadLine();
+
+            switch (SelectedNumber)
+            {
+                case "1":
+                    characterSpawner = new WarriorCreator();
+                    chosen = true;
+                    break;
+                case "2":
+                    characterSpawner = new MageCreator();
+                    chosen = true;
+                    break;
+                case "3":
+                    characterSpawner = new ArcherCreator();
+                    chosen = true;
+                    break;
+                default:
+                    Console.WriteLine("Ta opcja nie istnieje. Wybierz poprawnie od 1 do 3");
+                    break;
+            }
+
         }
 
+        Character SelectedCharacter = characterSpawner.CreateCharacter();
         return SelectedCharacter;
     }
 
@@ -59,14 +73,16 @@ class Program
 
             string? SelectedAnswer = Console.ReadLine();
 
-
             switch (SelectedAnswer)
             {
                 case "y":
-                    Hero.UseWeapon();
+                    Hero.UseWeapon(new Sword());
+                    Console.WriteLine($"{Hero.Name} otrzymał {Hero.Weapon.Name} o mocy {Hero.Weapon.Damage}");
                     IsWeaponChoosen = true;
                     break;
                 case "n":
+                    Hero.UseWeapon(new NoWeapon());
+                    Console.WriteLine($"{Hero.Name} nie otrzyma żadnej broni");
                     IsWeaponChoosen = true;
                     break;
                 default:
