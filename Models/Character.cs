@@ -18,7 +18,7 @@ public class Character
 
     public virtual void ShowStats()
     {
-        Console.WriteLine($"[{Name}] HP: {Health} | STR: {Strength}");
+        Console.WriteLine($"[{Name}] HP: {Health} | STR: {Strength} | WEAPON POWER: {(WeaponPower == 0 ? "Brak" : WeaponPower)} ");
     }
 
     public int Atack()

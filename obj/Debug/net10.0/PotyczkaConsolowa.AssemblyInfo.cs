@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PotyczkaConsolowa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee4954d5627e98ef8e7080fcbc1515e72df9f2f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+539b05044726a593396fb1e74ce4b741470b2285")]
 [assembly: System.Reflection.AssemblyProductAttribute("PotyczkaConsolowa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PotyczkaConsolowa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
